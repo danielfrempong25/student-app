@@ -18,9 +18,17 @@ const noteSlice = createSlice({
         }
       });
     },
+    editNote: (state,action)=>{
+      state.notes = state.notes.map((note)=>{
+        if(note.id === action.payload.id){
+          return action.payload.updatedNote;
+        }
+        return note
+      })
+    }
   },
 });
 
-export const { addNote, deleteNote } = noteSlice.actions;
+export const { addNote, deleteNote,editNote } = noteSlice.actions;
 
 export default noteSlice.reducer;
